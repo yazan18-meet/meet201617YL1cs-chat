@@ -1,4 +1,4 @@
-i# turtle_chat_client.py
+# turtle_chat_client.py
 
 import sys
 import socket
