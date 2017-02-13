@@ -58,6 +58,7 @@ class TextBox(TextInput):
     
     def draw_box(self):
         
+        turtle.clear()
         turtle.penup()
         turtle.goto(self.pos)
         turtle.pendown()
@@ -67,8 +68,9 @@ class TextBox(TextInput):
         turtle.goto(self.pos)
         turtle.mainloop()
 
-    def write_smg(self):
+    def write_msg(self):
         self.setup_listeners()
+        self.writer.clear()
         print(self.new_msg)
         self.writer.goto(10,self.height - 15)
         self.writer.write(self.new_msg)
