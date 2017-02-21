@@ -50,35 +50,23 @@ from turtle_chat_widgets import Button,TextInput
 class TextBox(TextInput):
     
     def draw_box(self):
-        
+
         turtle.clear()
-        
         turtle.penup()
-
         turtle.goto(self.pos)
-
         turtle.pendown()
-
         turtle.goto(0,self.height)
-
         turtle.goto(self.width,self.height)
-
         turtle.goto(self.width,0)
-
         turtle.goto(self.pos)
-
         turtle.mainloop()
 
     def write_msg(self):
 
         self.setup_listeners()
-
         self.writer.clear()
-
         print(self.new_msg)
-
         self.writer.goto(10,self.height - 15)
-
         self.writer.write(self.new_msg)
 
 DB = TextBox()
@@ -118,31 +106,27 @@ class SendButton(Button):
 class View:
     
     _MSG_LOG_LENGTH = 5
-
     _SCREEN_WIDTH = 300
-
     _SCREEN_HEIGHT = 600
-
     _LINE_SPACING = round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
 
     def __init__(self, username = 'Me', partner_name='Partner'):
 
         self.username = username
-
+        
         self.partner_name = partner_name
 
         self.my_client = Client()
-
+        
         turtle.setup(View._SCREEN_WIDTH , View._SCREEN_HEIGHT)
 
         self.msg_queue=[]
-
 
         self.view_t = turtle.clone()
 
         self.tb = TextBox()
 
-        self.sb = SendButton()
+        self.sb = SendButton(view=self)
 
         self.setup_listeners()
 
@@ -161,11 +145,11 @@ class View:
         return self.textbox.get_msg()
 
     def setup_listeners(self):
-
+'''
         self.send_btn.fun = SendButton()
-
         turtle.onkeypress(send_btn.fun)
-    
+'''
+        pass
     def msg_received(self , msg):
 
         print(msg)
@@ -174,11 +158,12 @@ class View:
 
         self.msg_queue.append(msg)
 
-        self.display_msg(self)
+        self.display_msg()
 
     def display_msg(self):
-        pass
-
+        
+        
+        
 
 if __name__ == '__main__':
 
@@ -200,9 +185,9 @@ if __name__ == '__main__':
             else:
 
                 my_view.msg_received(msg_in)
-
+                
         turtle.ontimer(check,_WAIT_TIME) #Check recursively
-
+        
     check()
 
 turtle.mainloop()
