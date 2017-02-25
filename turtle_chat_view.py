@@ -145,11 +145,8 @@ class View:
         return self.textbox.get_msg()
 
     def setup_listeners(self):
-'''
-        self.send_btn.fun = SendButton()
-        turtle.onkeypress(send_btn.fun)
-'''
         pass
+    
     def msg_received(self , msg):
 
         print(msg)
@@ -165,32 +162,7 @@ class View:
         
         
 
-if __name__ == '__main__':
 
-    my_view=View()
-
-    _WAIT_TIME=200 #Time between check for new message, ms
-    def check() :
-
-        msg_in=my_view.my_client.receive()
-
-        if not(msg_in is None):
-
-            if msg_in==my_view.my_client._END_MSG:
-
-                print('End message received')
-
-                sys.exit()
-
-            else:
-
-                my_view.msg_received(msg_in)
-                
-        turtle.ontimer(check,_WAIT_TIME) #Check recursively
-        
-    check()
-
-turtle.mainloop()
 #Make a new class called View.  It does not need to have a parent
 #class mentioned explicitly.
 #
